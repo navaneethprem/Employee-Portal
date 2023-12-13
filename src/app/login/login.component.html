@@ -1,24 +1,35 @@
-<div style="width: 100%;height: 85vh;background-image: url('https://img.freepik.com/free-photo/white-blank-background-texture-design-element_53876-146863.jpg?size=626&ext=jpg&ga=GA1.1.34264412.1699315200&semt=ais'); background-size:cover;" class="d-flex justify-content-center align-items-center">
-    <div style="width: 900px;" class="shadow p-5 row rounded bg-light">
-        <div class="col-lg-8">
-            <img class="img-fluid" style="height: 400px;" src="https://getillustrations.b-cdn.net//packs/plastic-illustrations-scene-builder-pack/scenes/_1x/accounts%20_%20man,%20workspace,%20desk,%20laptop,%20login,%20user_md.png" alt="no image">
-        </div>
-        <div class="col-lg-4 mt-5 p-2">
-            <form>
-                <h1 class="fw-bolder mb-3">Login Form</h1>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                  </div>
-                  <div class="d-grid">
-                    <button class="btn btn-primary mt-3">Login</button>
-                  </div>
-            </form>
-        </div>
+<div class="d-flex align-items-center justify-content-center " style="height: 700px; width: 100%; background-color: #001861;">
+   
+  <div style="width: 600px; height: auto;" class=" shadow border m-5 bg-light  d-flex align-items-center justify-content-center">
+      <div>
+        <img class="img-fluid" src="https://static.vecteezy.com/system/resources/thumbnails/016/900/444/small/online-dating-app-login-illustration-valentine-s-day-love-match-mobile-leaves-gradient-character-illustration-vector.jpg" alt="img">
     </div>
+      <div class="p-5">
+          <h3 class="bold">Login</h3>
+          <form #login="ngForm" (ngSubmit)="Login()" >
+              <div class="mb-3">
+                  <input type="text" class="form-control" placeholder="email"  name="email" [(ngModel)]="email" email required #useremailinput="ngModel">
+              </div>
+              <!-- invalid email -->
+              <div *ngIf="useremailinput.invalid && useremailinput.touched " class="mb-3 text-danger fw-bolder">
+                  Invalid Email
+              </div>
 
+              <div class="mb-3">
+                  <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="password" required pattern="[a-zA-Z0-9]*" minlength="3" #userpassword="ngModel" >
+              </div>
+              <!-- invalid password -->
+              <div *ngIf="userpassword.invalid && userpassword.touched " class="mb-3 text-danger fw-bolder">
+                  Invalid password
+              </div>
+              
+              <div class="mb-3">
+                 <button [disabled]="login.invalid" type="submit" class="btn btn-primary">Login</button>
+              </div>
+      
+          </form>
+      
+      </div>
+  </div>
+  
 </div>
