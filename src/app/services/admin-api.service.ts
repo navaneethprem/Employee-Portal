@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AdminApiService {
 
-  SERVER_URL = 'http://localhost:3000'
+  SERVER_URL = 'https://employee-portal-pscj.onrender.com'
 
   constructor(private http:HttpClient) { }
 
@@ -15,4 +15,7 @@ export class AdminApiService {
     return this.http.get(`${this.SERVER_URL}/users/1`)
   }
 
+  updateAdmin(admin:any){
+    return this.http.put(`${this.SERVER_URL}/users/1`,admin)
+  }
 }

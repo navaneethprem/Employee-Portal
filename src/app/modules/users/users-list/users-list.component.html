@@ -32,18 +32,18 @@
               <th scope="col">User Name</th>
               <th scope="col">Email</th>
               <th scope="col">Status</th>
-              <th scope="col">Actions</th>
+              <th scope="col" class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr *ngFor="let user of allUsers | search: searchKey | paginate : { itemsPerPage: 2, currentPage: p }" [hidden]="user.id=='1'">
+            <tr *ngFor="let user of allUsers | search: searchKey | paginate : { itemsPerPage: 3, currentPage: p }" [hidden]="user.id=='1'">
               <th scope="row">{{user.id}}</th>
               <td>{{user.name}}</td>
               <td>{{user.email}}</td>
               <td><span [ngClass]="user.active==='1'?'btn btn-success':'btn btn-warning'">{{user.active==='1'?'Active':'Inactive'}}</span></td>
-              <td>
-                <a routerLink="edit/{{user.id}}" class="btn btn-light"><i class="fa-solid fa-pen"></i></a>
-                <i class="fa-solid fa-trash" (click)="removeUser(user.id)"></i>
+              <td class="d-flex justify-content-center">
+                <a routerLink="edit/{{user.id}}" class="btn btn-light"><i class="fa-solid fa-pen text-success"></i></a>
+                <i class="fa-solid fa-trash btn text-danger btn-light" (click)="removeUser(user.id)"></i>
               </td>
             </tr>
             <tr *ngIf="(allUsers|search:searchKey).length===0">

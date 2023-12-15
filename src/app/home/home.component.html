@@ -1,9 +1,35 @@
 <div class="d-flex">
-    <div style="height: 90vh;width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
+    <div *ngIf="showSidebar" style="height: 90vh;width: 150px;" class="sidebar bg-dark text-light p-3 d-flex flex-column">
         <a style="text-decoration: none;margin-top: 10px;font-weight: bold; color: white;" routerLink="/dashboard">Home</a>
         <a style="text-decoration: none;margin-top: 10px;font-weight: bold; color: white;" routerLink="/users">Users</a>
+        <button (click)="logout()" class="mt-auto btn text-center text-light">Logout</button>
     </div>
     <div class="dashboard p-3 w-100">
-        <h1>Welcome Admin!!!</h1>
+        <div class="row">
+            <div class="col-lg-8">
+                <div style="height: 180px; background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220215/pngtree-banner-background-of-blue-technology-mobile-communication-conference-image_925353.jpg);" class="admin-banner w-100 rounded d-flex align-items-center shadow" >
+                    <h1 class="ms-5 fw-bolder d-flex align-items-center fs-3 text-light"><i class="fa-solid fa-bars-staggered me-3" (click)="menuBtnClick()"></i><span class="mt-1" style="height: 40px;">Welcome {{admin_name}}</span></h1>
+                </div>
+                <div class="row m-3">
+                    <div class="col-lg-5 shadow ">
+                        <mat-card class="demo-inline-calendar-card">
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                          </mat-card>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-6 border rounded shadow">
+                        <app-chart></app-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div style="height: 400px;" class="edit-admin border rounded shadow p-2">
+                    <app-update-admin (onAdminChange)="getUpdateAdmin($event)"></app-update-admin>
+                </div>
+                <div style="height: 100px; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9dm0N0D4v80OvdUbR99zirzGD5O2jUfZOd_hy5zOUClFWt7UU8al_Lu69eKO9cDcwef8&usqp=CAU); background-size: cover;" class="mt-2 border rounded shadow p-2 bg-dark text-light d-flex align-items-center justify-content-center">
+                    <h2 class="fw-bolder"><i class="fa-solid fa-users me-2"></i>Employees : {{employeeCount}}</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
